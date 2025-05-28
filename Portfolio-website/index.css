@@ -1,0 +1,44 @@
+
+body{
+    background-color: rgb(242, 239, 233);
+}
+.header{
+       background-color: bisque;
+    color: black;
+    text-align: center;
+    padding: 5px;
+}
+.nav-bar-list{
+    background-color: burlywood;
+    color: black;
+    display: flex;
+    justify-content: center;
+}
+ul{
+    display: flex;
+    list-style-type: none;
+}
+li{
+    padding: 10px;
+}
+
+h2{
+    color: chocolate;
+}
+
+.main-project-div{
+    display: flex;
+}
+.project-div{
+    background-color: rgb(247, 246, 243);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px;
+    margin: 20px;
+}
+footer{
+    background-color: rgb(241, 150, 31);
+    color: antiquewhite;
+    text-align: center;
+    padding: 8px;
+}
