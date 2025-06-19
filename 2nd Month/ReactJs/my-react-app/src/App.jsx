@@ -1,5 +1,6 @@
 
-import"/app.css"
+import 'bootstrap/dist/css/bootstrap.min.css';
+import"./app.css"
 
 function App() {
 
@@ -44,7 +45,7 @@ function App() {
                     <h2 className="section-title">About Me</h2>
                     <div className="row align-items-center">
                         <div className="col-md-6 mb-4  text-center">
-                            <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7" alt="Profile" className=" w-50 img-fluid rounded shadow">
+                            <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7" alt="Profile" className=" w-50 img-fluid rounded shadow"/>
                         </div>
                         <div className="col-md-6">
                             <p>I'm a dedicated MERN Stack developer with 2 years of experience in building scalable and user-friendly web applications. Proficient in MongoDB, Express.js, React, and Node.js, I specialize in creating seamless full-stack solutions.</p>
@@ -62,7 +63,7 @@ function App() {
                     <div className="row">
                         <div className="col-md-3 col-sm-6 mb-4">
                             <div className="card skill-card">
-                                <img src="https://cdn-icons-png.flaticon.com/512/1205/1205510.png" alt="MongoDB">
+                                <img src="https://cdn-icons-png.flaticon.com/512/1205/1205510.png" alt="MongoDB"/>
                                     <div className="card-body">
                                         <h5 className="card-title">MongoDB</h5>
                                         <p className="card-text">Designing and managing NoSQL databases for efficient data storage and scalability.</p>
@@ -71,7 +72,7 @@ function App() {
                         </div>
                         <div className="col-md-3 col-sm-6 mb-4">
                             <div className="card skill-card">
-                                <img src="https://cdn-icons-png.flaticon.com/512/1183/1183669.png" alt="Express.js">
+                                <img src="https://cdn-icons-png.flaticon.com/512/1183/1183669.png" alt="Express.js"/>
                                     <div className="card-body">
                                         <h5 className="card-title">Express.js</h5>
                                         <p className="card-text">Building robust RESTful APIs for seamless backend functionality.</p>
@@ -80,7 +81,7 @@ function App() {
                         </div>
                         <div className="col-md-3 col-sm-6 mb-4">
                             <div className="card skill-card">
-                                <img src="https://cdn-icons-png.flaticon.com/512/1260/1260667.png" alt="React">
+                                <img src="https://cdn-icons-png.flaticon.com/512/1260/1260667.png" alt="React"/>
                                     <div className="card-body">
                                         <h5 className="card-title">React</h5>
                                         <p className="card-text">Creating dynamic and responsive front-end interfaces with React.</p>
@@ -89,7 +90,7 @@ function App() {
                         </div>
                         <div className="col-md-3 col-sm-6 mb-4">
                             <div className="card skill-card">
-                                <img src="https://cdn-icons-png.flaticon.com/512/5968/5968322.png" alt="Node.js">
+                                <img src="https://cdn-icons-png.flaticon.com/512/5968/5968322.png" alt="Node.js"/>
                                     <div className="card-body">
                                         <h5 className="card-title">Node.js</h5>
                                         <p className="card-text">Developing high-performance server-side applications.</p>
@@ -136,7 +137,7 @@ function App() {
                     <div className="row">
                         <div className="col-md-4 mb-4">
                             <div className="card project-card">
-                                <img src="https://images.unsplash.com/photo-1556742044-3c52d6e88c62" className="card-img-top" alt="E-Commerce">
+                                <img src="https://images.unsplash.com/photo-1556742044-3c52d6e88c62" className="card-img-top" alt="E-Commerce"/>
                                     <div className="card-body">
                                         <h5 className="card-title">E-Commerce Platform</h5>
                                         <p className="card-text">A full-stack MERN application with user authentication, product filtering, and Stripe payment integration.</p>
@@ -146,7 +147,7 @@ function App() {
                         </div>
                         <div className="col-md-4 mb-4">
                             <div className="card project-card">
-                                <img src="https://images.unsplash.com/photo-1556742044-3c52d6e88c62" className="card-img-top" alt="E-Commerce">
+                                <img src="https://images.unsplash.com/photo-1556742044-3c52d6e88c62" className="card-img-top" alt="E-Commerce"/>
                                     <div className="card-body">
                                         <h5 className="card-title">Task Management App</h5>
                                         <p className="card-text">A React-based task manager with MongoDB backend, featuring real-time updates and user roles.</p>
@@ -156,7 +157,7 @@ function App() {
                         </div>
                         <div className="col-md-4 mb-4">
                             <div className="card project-card">
-                                <img src="https://images.unsplash.com/photo-1556742044-3c52d6e88c62" className="card-img-top" alt="E-Commerce">
+                                <img src="https://images.unsplash.com/photo-1556742044-3c52d6e88c62" className="card-img-top" alt="E-Commerce"/>
                                     <div className="card-body">
                                         <h5 className="card-title">Personal Portfolio</h5>
                                         <p className="card-text">A responsive portfolio website built with React and Bootstrap, showcasing my projects and skills.</p>
@@ -177,11 +178,11 @@ function App() {
                             <form className="contact-form">
                                 <div className="mb-3">
                                     <label for="name" className="form-label">Name</label>
-                                    <input type="text" className="form-control" id="name" placeholder="Pournima Mane">
+                                    <input type="text" className="form-control" id="name" placeholder="Pournima Mane"/>
                                 </div>
                                 <div className="mb-3">
                                     <label for="email" className="form-label">Email</label>
-                                    <input type="email" className="form-control" id="email" placeholder="Your Email">
+                                    <input type="email" className="form-control" id="email" placeholder="Your Email"/>
                                 </div>
                                 <div className="mb-3">
                                     <label for="message" className="form-label">Message</label>
