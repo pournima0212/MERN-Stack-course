@@ -2,30 +2,28 @@
 import { useState } from "react";
 
 function App() {
- const[ name , setName ] = useState()
- const[ showName , setShowName] = useState(false)
+  const [name, setName] = useState()
+  const [showName, setShowName] = useState(false);
 
- console.log(name)
+  const handleOnChange = (e) => {
+    console.log(e.target.value, "===")
+    setName(e.target.value);
+  };
 
- const handleOnChange = (e) =>{
-console.log(e.target.value, "===")
-setName(e.target.value)
- }
-
- const handleSubmit = () =>{
-  setShowName(true)
- }
+  const handleSubmit = () => {
+    setShowName(true);
+  };
   return (
     <>
 
-    <input name= "name" placeholder="Enter Your Name" onChange={handleOnChange}/>
+      <input name="name" placeholder="Enter Your Name" onChange={handleOnChange} />
 
-    <button onClick={handleSubmit} >Submit</button>
+      <button onClick={handleSubmit} >Submit</button>
 
-    {showName && <h1>{name}</h1>}
+      {showName && <h1>{name}</h1>}
 
     </>
-  )
+  );
 }
 
 export default App
