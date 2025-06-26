@@ -1,6 +1,6 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { useState } from "react";
-import Card from './Card';
+import Buttons from './Buttons';
 
 function App() {
   const [name, setName] = useState(); //Hooks
@@ -16,19 +16,18 @@ function App() {
     setShowName(true);
   };
 
-  const [cardData, setCardData] = useState(
+  const [ButtonsData, setButtonsData] = useState(
     [
-      { title: "Title - 1" },
-      { title: "Title - 2" },
-      { title: "Title - 3" },
-      { title: "Title - 4" },
+      { title: "Button - 1" },
+      { title: "Button - 2" },
+      { title: "Button - 3" },
+      { title: "Button - 4" },
     ]
   );
 
-  
+
   return (
-    <>
-    
+    <> 
       <input
         name="name"
         placeholder="Enter Your Name"
@@ -39,12 +38,14 @@ function App() {
       {showName && <h1>{name}</h1>}
 
       {cardData.map((each) => (
-        <Card title={each.title} />
+        <Buttons title={each.title} />
       ))}
 
     </>
   );
 }
+
+
 
 export default App
 
