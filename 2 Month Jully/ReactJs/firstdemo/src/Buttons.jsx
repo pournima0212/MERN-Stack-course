@@ -14,4 +14,4 @@ const Buttons = ({ title }) => {
     )
 }
 
-export default Card
+export default Buttons
