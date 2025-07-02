@@ -4,9 +4,13 @@ const createStudent = async (req, res) => {
     try {
         console.log("Start POST API");
 
-        const { FirstName, LastName, Std, RollNo, Address } = req.body;
+        const { firstName, lastName, std, rollNo, address } = req.body;
         const studentData = new Student({
-            FirstName, LastName, Std, RollNo, Address
+            firstName, 
+            lastName, 
+            std, 
+            rollNo, 
+            address,
         }); // create new student from request body
 
         await studentData.save(); // Save to database

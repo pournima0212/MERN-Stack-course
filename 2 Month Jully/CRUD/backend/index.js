@@ -5,6 +5,7 @@ const bodyParser = require("body-parser");// json data
 const connectMongoDb = require("./config/db");
 // const Student = require("./models/studentModel");
 const { createStudent, getAllStudent } = require("./controllers/studentController");
+const cors = require("cors");
 
 // To create express Application
 const app = express();
@@ -14,6 +15,7 @@ const PORT = 2000;
 
 //middleware to parse json data from requests
 app.use(bodyParser.json());
+app.use(cors());
 
 // to start the server
 app.listen(PORT, () => {
