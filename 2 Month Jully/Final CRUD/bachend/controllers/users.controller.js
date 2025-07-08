@@ -33,8 +33,10 @@ const getAllUsers = async (req, res) => {
 
 const deleteUser = async (req, res) => {
     try {
-        const userId = req.body;
-        await Users.findByIdAndDelete({_id : userId})
+        const { userId } = req.query;
+        console.log(userId, "userId")
+        const userData = await Users.findByIdAndDelete(userId)
+        console.log(userData, "userData")
         res.status(201).json({ message: "User Deleted" });
 
     } catch (error) {
@@ -45,7 +47,10 @@ const deleteUser = async (req, res) => {
 
 const updateUser = async (req, res) => {
     try {
-        res.status(201).json({ message: "Working on this API" });
+        const { userId } = req.query;
+        const { name, email, mobileNo, age } = req.body;
+        const updateUser = await Users.findByIdAndUpdate(userId, { name, email, mobileNo, age })
+        res.status(201).json({ data: updateUser, message: "User updated" });
 
     } catch (error) {
         console.log(error);
