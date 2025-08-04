@@ -1,10 +1,26 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import loginpageimg from "./../../assets/Login-page-image.png"
 import instagramtextimg from "./../../assets/intagram-text-img.png"
 import googleiconlogo from"./../../assets/Logo-Google-image.webp"
-import { Link } from 'react-router-dom';
+import Button from "react-bootstrap/Button";
+import { Link } from 'react-router-dom'
+import axios from "axios";
 
 const Login = () => {
+    const [email, setEmail] = useState("");
+    const [password, setpassword] = useState("");
+
+    const submitLoginForm = async () => {
+        try {
+            const apiResponse = await axios.post("http://localhost:9090/api/auth/login", {
+                email: email,
+                password: password,
+            })
+            console.log(apiResponse, "apiResponse ===>")
+        } catch (error) {
+            console.log(error)
+        }
+    }
     return (
         <div className="login-page">
 
@@ -17,13 +33,25 @@ const Login = () => {
                         <img src={instagramtextimg} alt="" className="instagram-icon mb-4" />
                         <form className="login-form">
                             <div class="form-group">
-                                <input type="email" class="form-control my-2 width: 100%;" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="username or email" />
+                                <input type="email"
+                                    className="form-control my-2"
+                                    id="exampleInputEmail1"
+                                    placeholder="Mobile Number or email"
+                                    onChange={(e) => setEmail(e.target.value)}
+                                />
                             </div>
                             <div class="form-group">
-                                <input type="password" class="form-control my-2 width: 100%" id="exampleInputPassword1" placeholder="Password" />
+                                <input type="password"
+                                    className="form-control my-2"
+                                    id="exampleInputPassword1"
+                                    placeholder="Password"
+                                    onChange={(e) => setpassword(e.target.value)}
+                                />
                             </div>
-                            <button type="submit" class="btn btn-primary mt-3 login-btn">Log in</button>
-                            <hr/>
+                           <Button variant="primary" className="btn btn-primary  mt-3 login-btn" onClick={submitLoginForm}>
+                                Sign Up
+                            </Button>
+                            <hr />
                             <div className="text-center">
                                 <img src={googleiconlogo}
                                     alt=""
@@ -32,7 +60,7 @@ const Login = () => {
                             <p className="text-center mt-2">Login with Google</p>
                             <p className="text-center mt-3"><b>Forgot Password?</b></p>
                             <p className="text-center mt-5">
-                                Don't have an account? <b><Link to="/register">Sign up</Link></b>
+                                Don't have an account?<span className="bold"><u> <Link to="/register"><b>Sign up</b></Link></u></span>
                             </p>
                         </form>
                     </div>
