@@ -1,0 +1,58 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Roboto', sans-serif;
+  background-color: #fafafa;
+}
+
+.insta-container {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+ .insta-right {
+      max-width: 380px;
+    margin-left: 6px;
+}
+
+.register-box {
+  background-color: #fff;
+  border: 1px solid #dbdbdb;
+  padding: 40px;
+  margin-bottom: 10px;
+  text-align: center;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.05);
+}
+
+.logo {
+  width: 175px;
+  margin-bottom: 20px;
+}
+
+.heading{
+  color: #737373FF;
+}
+
+.signupbtn{
+    width: 100%;
+}
+.loginwithgooglebtn{
+ display: flex;
+  align-items: center;
+  background-color: #1677ff;
+  color: white;
+  padding: 10px 68px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+   width: 100%;
+}
+
+.google-logo{
+  width: 20px;
+  height: 20px;
+  margin-right: 10px;
+}
+
