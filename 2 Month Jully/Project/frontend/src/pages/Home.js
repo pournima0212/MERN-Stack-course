@@ -1,12 +1,17 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import ProfilePhoto from "./../assets/profile-pic.jpg"
 const Home = () => {
   const [show, setShow] = useState(false);
-
+  const [ token, setToken] = useState();
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+
+  useEffect(()=>{
+    const token = localStorage .getItem("userToken");
+    setToken(token)
+  }, []);
 
   return (
     <div className="home-container py-5">

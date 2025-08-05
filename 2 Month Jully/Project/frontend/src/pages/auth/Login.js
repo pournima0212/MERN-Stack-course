@@ -16,7 +16,9 @@ const Login = () => {
                 email: email,
                 password: password,
             })
-            console.log(apiResponse, "apiResponse ===>")
+            if(apiResponse.data.token){
+                localStorage.setItem("userToken", apiResponse.data.token)
+            }
         } catch (error) {
             console.log(error)
         }
