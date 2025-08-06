@@ -5,10 +5,13 @@ import googleiconlogo from"./../../assets/Logo-Google-image.webp"
 import Button from "react-bootstrap/Button";
 import { Link } from 'react-router-dom'
 import axios from "axios";
+import { useNavigate } from "react-router";
 
 const Login = () => {
     const [email, setEmail] = useState("");
     const [password, setpassword] = useState("");
+
+    let navigate = useNavigate();
 
     const submitLoginForm = async () => {
         try {
@@ -18,6 +21,7 @@ const Login = () => {
             })
             if(apiResponse.data.token){
                 localStorage.setItem("userToken", apiResponse.data.token)
+             navigate("/home")   
             }
         } catch (error) {
             console.log(error)
@@ -34,7 +38,7 @@ const Login = () => {
                     <div className='col-md-6 text-center'>
                         <img src={instagramtextimg} alt="" className="instagram-icon mb-4" />
                         <form className="login-form">
-                            <div class="form-group">
+                            <div className="form-group">
                                 <input type="email"
                                     className="form-control my-2"
                                     id="exampleInputEmail1"
@@ -42,7 +46,7 @@ const Login = () => {
                                     onChange={(e) => setEmail(e.target.value)}
                                 />
                             </div>
-                            <div class="form-group">
+                            <div className="form-group">
                                 <input type="password"
                                     className="form-control my-2"
                                     id="exampleInputPassword1"

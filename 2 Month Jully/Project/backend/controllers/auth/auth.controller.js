@@ -24,11 +24,11 @@ const transporter = nodemailer.createTransport({
 const registerUser = async (req, res) => {
     try {
         console.log("Register API called")
-        const { userName, email, fullName, password } = req.body
+        const { userName, email, fullName, password , mobileNo } = req.body
 
         const hashedPassword = await bcrypt.hash(password, 10)
 
-        const newUser = await User({ userName, email, fullName, password: hashedPassword });
+        const newUser = await User({ userName, email, fullName, password: hashedPassword, mobileNo });
         await newUser.save()
 
         res.status(201).json({ user: newUser, message: "user registered successfully" });

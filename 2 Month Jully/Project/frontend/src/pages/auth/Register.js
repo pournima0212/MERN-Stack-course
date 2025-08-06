@@ -11,6 +11,7 @@ import axios from 'axios';
 const Register = () => {
 
     const [email, setEmail] = useState("")
+     const [mobileNo, setMobileNo] = useState("")
     const [userName, setUserName] = useState("")
     const [fullName, setFullName] = useState("")
     const [password, setpassword] = useState("")
@@ -18,6 +19,7 @@ const Register = () => {
     const submitForm = async () => {
         try {
             console.log(email, "email")
+            console.log(mobileNo, "mobileNo")
             console.log(userName, "userName")
             console.log(fullName, "fullName")
             console.log(password, "password")
@@ -27,6 +29,7 @@ const Register = () => {
                 email: email ,
                 fullName: fullName ,
                 password: password,
+                mobileNo: mobileNo,
             }) 
 
             console. log(apiResponse, "apiResponse ===>")
@@ -53,8 +56,14 @@ const Register = () => {
                         <input type="email"
                             className="form-control my-2"
                             id="exampleInputEmail1"
-                            placeholder="Mobile Number or email"
+                            placeholder="email"
                             onChange={(e) => setEmail(e.target.value)}
+                        />
+                        <input type="number"
+                            className="form-control my-2"
+                            id="exampleInputEmail1"
+                            placeholder="Mobile Number"
+                            onChange={(e) => setMobileNo(e.target.value)}
                         />
                         <input type="password"
                             className="form-control my-2"

@@ -2,16 +2,55 @@ import React, { useEffect, useState } from "react";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import ProfilePhoto from "./../assets/profile-pic.jpg"
+import axios from "axios";
+import { useNavigate } from "react-router";
+
 const Home = () => {
   const [show, setShow] = useState(false);
-  const [ token, setToken] = useState();
+  const [userData, setUserData] = useState(null);
+  
+  const navigate = useNavigate();
+
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+  
+
+  // useEffect(()=>{
+  //   const token = localStorage .getItem("userToken");
+  //   setToken(token)
+  // }, []);
+
+  const getUserInfo = async () => {
+    try {
+
+       const token = localStorage.getItem("userToken");
+
+      if (!token) {
+        navigate("/");
+        return;
+      }
+
+      const apiResponse = await axios.get("http://localhost:9090/api/user/getuserprofile", {
+        headers : {
+          Authorization : `Bearer ${token}`,
+        },
+      })
+
+      setUserData(apiResponse.data.UserData);
+      
+    } catch (error) {
+      
+       console.error("Error fetching user info:", error);
+      navigate("/login");
+    }
+
+  }
+  
 
   useEffect(()=>{
-    const token = localStorage .getItem("userToken");
-    setToken(token)
-  }, []);
+    getUserInfo()
+  }, [])
+
 
   return (
     <div className="home-container py-5">
@@ -125,14 +164,14 @@ const Home = () => {
               alt="Profile"
               className="profile-img rounded-circle"
             />
-            <div class="form-group">
+            <div className="form-group">
               <input
                 type="text"
                 className="form-control my-2 w-100"
                 placeholder="Enter username"
               />
             </div>
-            <div class="form-group">
+            <div className="form-group">
               <input
                 type="email"
                 className="form-control my-2 w-100"
@@ -141,7 +180,7 @@ const Home = () => {
                 placeholder="Enter email"
               />
             </div>
-            <div class="form-group">
+            <div className="form-group">
               <input
                 type="number"
                 className="form-control my-2 w-100"
