@@ -10,19 +10,11 @@ const Home = () => {
   const [userData, setUserData] = useState(null);
   
   const navigate = useNavigate();
-
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   
-
-  // useEffect(()=>{
-  //   const token = localStorage .getItem("userToken");
-  //   setToken(token)
-  // }, []);
-
   const getUserInfo = async () => {
     try {
-
        const token = localStorage.getItem("userToken");
 
       if (!token) {
@@ -36,20 +28,29 @@ const Home = () => {
         },
       })
 
-      setUserData(apiResponse.data.UserData);
+      setUserData(apiResponse.data.userData);
       
     } catch (error) {
       
        console.error("Error fetching user info:", error);
       navigate("/login");
     }
+  };
 
-  }
-  
+  console.log(userData , "userData");
 
   useEffect(()=>{
     getUserInfo()
   }, [])
+
+  const handleLogout  = () => {
+    localStorage.removeItem("userToken");
+    navigate("/")
+  };
+
+  const handleProfile = () => {
+    console.log("edit profile clicked")
+  };
 
 
   return (
@@ -68,18 +69,19 @@ const Home = () => {
             <h2 className="mb-3">Pournima Mane</h2>
             <ul className="list-unstyled">
               <li>
-                <strong>Username:</strong> pournima1111
+                <strong>Username:</strong> {userData?.userName}
               </li>
               <li>
-                <strong>Email:</strong> mane@gmail.com
+                <strong>Email:</strong> {userData?.email}
               </li>
               <li>
-                <strong>Mobile:</strong> 7050716493
+                <strong>Mobile:</strong> {userData?.mobileNo}
               </li>
             </ul>
           </div>
           <div className="col-md-4 text-center text-md-end">
-            <button className="btn btn-danger my-1 w-100">Log Out</button>
+            <button className="btn btn-danger my-1 w-100" onClick={handleLogout}>Log Out</button>
+
             <button className="btn btn-primary my-1 w-100" onClick={handleShow}>
               Edit Profile
             </button>

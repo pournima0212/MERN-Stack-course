@@ -5,6 +5,7 @@ import Register from "./pages/auth/Register";
 import Home from "./pages/Home";
 
 function App() {
+
   return (
     <BrowserRouter>
   <Routes>

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import loginpageimg from "./../../assets/Login-page-image.png"
 import instagramtextimg from "./../../assets/intagram-text-img.png"
-import googleiconlogo from"./../../assets/Logo-Google-image.webp"
+import googleiconlogo from "./../../assets/Logo-Google-image.webp"
 import Button from "react-bootstrap/Button";
 import { Link } from 'react-router-dom'
 import axios from "axios";
@@ -19,14 +19,32 @@ const Login = () => {
                 email: email,
                 password: password,
             })
-            if(apiResponse.data.token){
+            if (apiResponse.data.token) {
                 localStorage.setItem("userToken", apiResponse.data.token)
-             navigate("/home")   
+                navigate("/home")
             }
         } catch (error) {
             console.log(error)
         }
     }
+
+    const checkLoginisTrue = async () => {
+        try {
+
+            const token = localStorage.getItem("userToken");
+            if (token) {
+                navigate("/home");
+            }
+
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
+    useEffect(() => {
+        checkLoginisTrue();
+    }, []);
+
     return (
         <div className="login-page">
 
@@ -54,7 +72,7 @@ const Login = () => {
                                     onChange={(e) => setpassword(e.target.value)}
                                 />
                             </div>
-                           <Button variant="primary" className="btn btn-primary  mt-3 login-btn" onClick={submitLoginForm}>
+                            <Button variant="primary" className="btn btn-primary  mt-3 login-btn" onClick={submitLoginForm}>
                                 Sign Up
                             </Button>
                             <hr />
