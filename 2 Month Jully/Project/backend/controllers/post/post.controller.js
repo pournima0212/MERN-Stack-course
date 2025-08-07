@@ -26,8 +26,37 @@ const getAllPost = async(req,res) => {
         console.log(error)
     }
 }
+
+const getMyPost = async(req,res) => {
+    try {
+
+        const userId = req.user.id;
+
+        const postData = await Post.find({userId})
+
+        res.status(200).json({
+            message : "get all only my posts",
+            myPostData : postData
+        })
+
+    } catch (error) {
+        console.log(error.message)
+    }
+}
+
+const deletePost = () =>{
+    try {
+
+         const userId = req.user.id;
+        
+    } catch (error) {
+        console.log(error.message)
+    }
+}
  
 module.exports={
     createPost,
     getAllPost,
+    getMyPost,
+    deletePost,
 }
