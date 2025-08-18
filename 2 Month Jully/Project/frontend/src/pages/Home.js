@@ -4,10 +4,13 @@ import Modal from "react-bootstrap/Modal";
 import ProfilePhoto from "./../assets/profile-pic.jpg"
 import axios from "axios";
 import { useNavigate } from "react-router";
+import LogOutModel from "../components/modelPopups/logOutModel";
 
 const Home = () => {
   const [show, setShow] = useState(false);
   const [userData, setUserData] = useState(null);
+  const [logOutModelShow, setLogoutModelShow] = useState(false)
+  
   
   const navigate = useNavigate();
   const handleClose = () => setShow(false);
@@ -43,17 +46,19 @@ const Home = () => {
     getUserInfo()
   }, [])
 
-  const handleLogout  = () => {
+ const openLogOutModelFunction = () => {
+    setLogoutModelShow(true);
+  };
+  const closeLogOutModel = () => {
+    setLogoutModelShow(false);
+  };
+
+  const confirmLogOut = () => {
     localStorage.removeItem("userToken");
-    navigate("/")
+    navigate("/");
   };
 
-  const handleProfile = () => {
-    console.log("edit profile clicked")
-  };
-
-
-  return (
+   return (
     <div className="home-container py-5">
       <div className="container">
         {/* Profile Section */}
@@ -80,8 +85,13 @@ const Home = () => {
             </ul>
           </div>
           <div className="col-md-4 text-center text-md-end">
-            <button className="btn btn-danger my-1 w-100" onClick={handleLogout}>Log Out</button>
+            
 
+            <button
+              className="btn btn-danger my-1 w-100"
+              onClick={openLogOutModelFunction}
+            >Log Out
+            </button>
             <button className="btn btn-primary my-1 w-100" onClick={handleShow}>
               Edit Profile
             </button>
@@ -159,21 +169,20 @@ const Home = () => {
           <Modal.Title>Edit Profile</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          
           <form className="login-form">
-             <img
-              src="https://i1.rgstatic.net/ii/profile.image/1054505286258688-1628425060244_Q512/William-Blakeney.jpg"
+            <img
+              src={ProfilePhoto}
               alt="Profile"
               className="profile-img rounded-circle"
             />
-            <div className="form-group">
+            <div class="form-group">
               <input
                 type="text"
                 className="form-control my-2 w-100"
                 placeholder="Enter username"
               />
             </div>
-            <div className="form-group">
+            <div class="form-group">
               <input
                 type="email"
                 className="form-control my-2 w-100"
@@ -182,7 +191,7 @@ const Home = () => {
                 placeholder="Enter email"
               />
             </div>
-            <div className="form-group">
+            <div class="form-group">
               <input
                 type="number"
                 className="form-control my-2 w-100"
@@ -206,8 +215,15 @@ const Home = () => {
           </Button>
         </Modal.Footer>
       </Modal>
+
+      <LogOutModel
+        show={logOutModelShow}
+        handleClose={closeLogOutModel}
+        handleConfirm={confirmLogOut}
+      />
     </div>
   );
 };
 
 export default Home;
+    

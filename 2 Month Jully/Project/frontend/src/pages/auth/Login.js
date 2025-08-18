@@ -6,6 +6,7 @@ import Button from "react-bootstrap/Button";
 import { Link } from 'react-router-dom'
 import axios from "axios";
 import { useNavigate } from "react-router";
+import { ToastContainer, toast } from 'react-toastify';
 
 const Login = () => {
     const [email, setEmail] = useState("");
@@ -20,11 +21,18 @@ const Login = () => {
                 password: password,
             })
             if (apiResponse.data.token) {
-                localStorage.setItem("userToken", apiResponse.data.token)
-                navigate("/home")
+                toast.success("Login Successfull !")
+                setTimeout(() => {
+                    localStorage.setItem("userToken", apiResponse.data.token)
+                    navigate("/home");
+                }, 1000);
+
             }
         } catch (error) {
             console.log(error)
+
+            const errorMessage = error.response.data.message || "Invalid email or password"
+            toast.error(errorMessage)
         }
     }
 
@@ -45,11 +53,15 @@ const Login = () => {
         checkLoginisTrue();
     }, []);
 
+
+
     return (
         <div className="login-page">
 
             <div className='container'>
                 <div className='row'>
+
+
                     <div className='col-md-6 m-auto'>
                         <img src={loginpageimg} alt="" className="w-100" />
                     </div>
@@ -90,8 +102,10 @@ const Login = () => {
                     </div>
                 </div>
             </div>
+
+            <ToastContainer position="top-right" autoClose={2000} />
         </div>
     );
 }
 
-export default Login
+export default Login;
