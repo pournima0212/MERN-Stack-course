@@ -1,17 +1,45 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
-import useFetchData from './costomHook/useFetchData';
+import ExampleCustomHook from './AllHooks/ExampleCustomHook';
+import { useState } from 'react';
+import ExampleUseMemo from './AllHooks/ExampleUseMemo';
 
 function App() {
+  
+const [showCustomHook, setShowCustomHook] = useState(false)
+const [showUseMemo, setShowUseMemo] = useState(false)
+const handleCustomHook = () => {
+  try {
+    setShowUseMemo(false)
+    setShowCustomHook(true)
+  } catch (error) {
+    console.log(error)
+  }
+}
 
-  const url = "https://jsonplaceholder.typicode.com/posts"
+const handleUseMemo = () => {
+  try {
+    setShowCustomHook(false)
+    setShowUseMemo(true)
+  } catch (error) {
+   console.log(error) 
+  }
+}
 
-const {data , loading , error ,} = useFetchData(url)
-if(loading) return <h2>Loading</h2>
-if(error) return <h2>error</h2>
   return (
-    <div className="App">
-      {data.data && data.data.map((each , index) => <p key={index}>{each.title}</p>)}
+    <div className="">
+      <div className='container'>
+        <div className='row'>
+          <div className='col-md-1 mx-2'>
+            <button className='btn btn-primary'onClick={handleCustomHook}>customHook</button>
+          </div>
+          <div className='col-md-1 mx-2'>
+            <button className='btn btn-primary' onClick={handleUseMemo}>useMemo</button>
+          </div>
+        </div>
+      </div>
+      {showCustomHook && <ExampleCustomHook /> }
+      {showUseMemo && <ExampleUseMemo/>}
     </div>
   );
 }
