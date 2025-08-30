@@ -6,28 +6,28 @@ const ExampleUseReducer = () => {
         console.log(currentValue, "currentValue ==>");
         console.log(payload, "payload ==>");
 
-        if (payload.type === "add"){
-            return currentValue + 5;
+        if (payload.type === "multiply"){
+            return currentValue * 5;
         }else{
-         return currentValue - 5;
+         return currentValue / 5;
     }
             return currentValue;
     }
 
-    const [count, dispatch] = useReducer(reducer, 0)
+    const [count, dispatch] = useReducer(reducer, 10) // make initial value zero
 
-    const handleAdd = () => {
+    const handleMultiply = () => {
         try {
-            dispatch({type : "add"});
+            dispatch({type : "multiply"});
         
         } catch (error) {
             console.log(error)
         }
     }
 
-    const handleSubstraction = () => {
+    const handleDivision = () => {
         try {
-            dispatch({type : "substraction"});
+            dispatch({type : "division"});
 
         } catch (error) {
             console.log(error)
@@ -38,10 +38,10 @@ const ExampleUseReducer = () => {
         <div>
             <h1>Use Reducer Hook</h1>
             <h2>count : {count}</h2>
-            <button onClick={handleAdd}>Add</button>
+            <button onClick={handleMultiply}>Multiply</button>
             <br/>
             <br/>
-            <button onClick={handleSubstraction}>Substraction</button>
+            <button onClick={handleDivision}>Division</button>
         </div>
     );
 };
