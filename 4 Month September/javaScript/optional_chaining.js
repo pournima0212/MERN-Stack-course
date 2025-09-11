@@ -9,3 +9,7 @@ const mainObject = {
     },
   },
 };
+
+console.log(mainObject?.subObject?.aaa , "===")
+
+//console.log(mainObject && mainObject?.subObject?.aaa , "===")

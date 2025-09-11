@@ -7,7 +7,7 @@ console.log(a)  // it retuns undefine error because java script execute line by 
 var a = 10
 console.log(a)  // it shows value of a
 
-console.log(b)   // it also shows error that before initialization we can not access value of b
+console.log(b)   // it also shows error that before initialization we can not access value of b //this nothing but temporal dead zone 
 let b = 50
 console.log(b)  // it returns value of b
 

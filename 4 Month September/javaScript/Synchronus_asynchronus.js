@@ -14,7 +14,10 @@ console.log("Third")
 
 // asynchronous operation based on 3 operations
 
-// 1) callback
+
+
+
+// 1) callback function
 
 function firstFunction(newFunction){   // we can pass function as an argument of another function to execute later 
     console.log("call back function")
